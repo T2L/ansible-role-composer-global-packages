@@ -1,0 +1,44 @@
+---
+galaxy_info:
+  author: Roman Paska
+  description: Install globally-required Composer packages.
+  company: Lemberg Solutions
+  license: MIT
+  min_ansible_version: 1.0
+  platforms:
+    - name: EL
+      versions:
+        - all
+    - name: GenericUNIX
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: opensuse
+      versions:
+        - all
+    - name: GenericBSD
+      versions:
+        - all
+    - name: FreeBSD
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+    - name: SLES
+      versions:
+        - all
+    - name: GenericLinux
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
+  galaxy_tags:
+    - development
+    - packaging
+    - web
+dependencies:
+    - T2L.composer

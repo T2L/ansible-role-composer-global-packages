@@ -1,0 +1,27 @@
+---
+
+# Add Composer bin directory to global $PATH.
+- name: Add Composer bin directory to global $PATH.
+  template:
+    src: composer.sh.j2
+    dest: /etc/profile.d/composer.sh
+    mode: 0644
+
+# Get Composer home path.
+- name: Get Composer home path.
+  shell: >
+    echo "$(echo ~{{ composer_username | default(ansible_user_id) }})/.composer"
+  register:
+    composer_home_path
+
+# Install globally-required Composer packages.
+- name: Install globally-required Composer packages.
+  shell: >
+    COMPOSER_HOME={{ composer_home_path.stdout }}
+    {{ composer_filename }} global require {{ item.name }}:{{ item.version | default("@stable") }} --no-progress
+  args:
+    creates: "{{ composer_home_path.stdout }}/vendor/{{ item.name }}"
+  with_items:
+    composer_global_packages
+  when:
+    composer_global_packages | length
