@@ -6,6 +6,8 @@
     src: composer.sh.j2
     dest: /etc/profile.d/composer.sh
     mode: 0644
+  when:
+    composer_global_packages | length
 
 # Get Composer home path.
 - name: Get Composer home path.
@@ -13,6 +15,8 @@
     echo "$(echo ~{{ composer_username | default(ansible_user_id) }})/.composer"
   register:
     composer_home_path
+  when:
+    composer_global_packages | length
 
 # Install globally-required Composer packages.
 - name: Install globally-required Composer packages.
