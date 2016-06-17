@@ -26,6 +26,6 @@
   args:
     creates: "{{ composer_home_path.stdout }}/vendor/{{ item.name }}"
   with_items:
-    composer_global_packages
+    "{{composer_global_packages}}"
   when:
     composer_global_packages | length
