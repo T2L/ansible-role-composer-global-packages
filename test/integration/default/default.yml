@@ -4,7 +4,7 @@
   roles:
     - geerlingguy.php
     - T2L.composer
-    - composer-global-packages
+    - ansible-role-composer-global-packages
   vars:
     # Do not notify web server, because we do not have any.
     php_enable_webserver: false
