@@ -23,9 +23,11 @@
   shell: >
     COMPOSER_HOME={{ composer_home_path.stdout }}
     {{ composer_filename }} global require {{ item.name }}:{{ item.version | default("@stable") }} --no-progress
-  args:
-    creates: "{{ composer_home_path.stdout }}/vendor/{{ item.name }}"
   with_items:
-    "{{composer_global_packages}}"
+    "{{ composer_global_packages }}"
   when:
     composer_global_packages | length
+  register:
+    composer_global_packages_result
+  changed_when:
+    "'Nothing to install or update' not in composer_global_packages_result.stderr"
