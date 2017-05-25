@@ -1,5 +1,7 @@
 # Ansible Role: Composer global packages
 
+[![Build Status](https://travis-ci.org/T2L/ansible-role-composer-global-packages.svg?branch=2.x.x)](https://travis-ci.org/T2L/ansible-role-composer-global-packages)
+
 Installs globally-required Composer packages.
 
 ## Requirements
