@@ -41,4 +41,5 @@ galaxy_info:
     - packaging
     - web
 dependencies:
-    - T2L.composer
+  - name: T2L.composer
+    version: 2.0.0

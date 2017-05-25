@@ -1,0 +1,15 @@
+---
+- hosts: all
+  remote_user: root
+  roles:
+    - T2L.php
+    - T2L.composer
+    - ansible-role-composer-global-packages
+  vars:
+    # Composer requires Zip extension.
+    php_extensions:
+      - zip
+    php_restart_web_server: false
+    composer_global_packages:
+      - name: drush/drush
+        version: 8.x

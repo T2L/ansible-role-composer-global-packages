@@ -1,7 +1,12 @@
 ---
+# Make sure Composer username is set.
+- name: Define Composer username
+  set_fact:
+    composer_username: "{{ ansible_user_id }}"
+  when: composer_username == ''
 
 # Add Composer bin directory to global $PATH.
-- name: Add Composer bin directory to global $PATH.
+- name: Add Composer bin directory to global $PATH
   template:
     src: composer.sh.j2
     dest: /etc/profile.d/composer.sh
@@ -10,10 +15,10 @@
     composer_global_packages | length
 
 # Install globally-required Composer packages.
-- name: Install globally-required Composer packages.
+- name: Install globally-required Composer packages
   become: true
   become_user: "{{ composer_username }}"
-  shell: >
+  command: >
     {{ composer_filename }} global require {{ item.name }}:{{ item.version | default("@stable") }} --no-progress
   with_items:
     "{{ composer_global_packages }}"

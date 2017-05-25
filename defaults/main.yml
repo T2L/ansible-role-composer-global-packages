@@ -6,7 +6,7 @@ composer_filename: composer
 # Composer installs globally-required packages on behalf of acting user
 # (usually root). In order to install packages for someone else, set this
 # variable. Defaults to system fact "ansible_user_id".
-composer_username: ""
+composer_username: ''
 
 # A list of packages to install globally. For each package the following
 # attributes can be specified:

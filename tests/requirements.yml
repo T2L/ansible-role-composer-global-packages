@@ -1,0 +1,5 @@
+---
+- src: T2L.php
+  version: 1.0.0
+- src: T2L.composer
+  version: 2.0.0
